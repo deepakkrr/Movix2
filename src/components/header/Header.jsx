@@ -98,8 +98,8 @@ const Header = () => {
               <li className='menuItem'>
                 <HiOutlineSearch onClick={openSearch}/>
               </li>&nbsp;&nbsp;&nbsp;
-              {/* <li className='menuItem'onClick={()=>navigationHAndler("login")}>Login</li>
-              <li className='menuItem' onClick={()=>navigationHAndler("signup")}>Signup</li> */}
+              <li className='menuItem'onClick={()=>navigationHAndler("login")}>Login</li>
+              <li className='menuItem' onClick={()=>navigationHAndler("signup")}>Signup</li>
                 
             </ul>
 

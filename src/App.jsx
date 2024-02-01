@@ -2,7 +2,7 @@ import React from "react";
 import { useEffect } from "react";
 import { fetchDataFromApi } from "./utils/api";
 import { useDispatch, useSelector } from "react-redux";
-import { getApiConfiguration,getGenres } from "./store/HomeSlice";
+import { getApiConfiguration, getGenres } from "./store/HomeSlice";
 import { Route, Routes } from "react-router-dom";
 
 import Header from "./components/header/Header";
@@ -12,8 +12,8 @@ import Details from "./pages/details/Details";
 import SearchResult from "./pages/searchResult/SearchResult";
 import Explore from "./pages/explore/Explore";
 import PageNotFound from "./pages/404/PageNotFound";
-import Signup from "./components/signup/Signup";
-import Login from "./components/Login/Login";
+// import Signup from "./components/signup/Signup";
+// import Login from "./components/Login/Login";
 import PrivateComponent from "./components/privateComponent/PrivateComponent";
 
 function App() {
@@ -45,17 +45,17 @@ function App() {
     let allGenres = {};
 
     endPoints.forEach((url) => {
-        promises.push(fetchDataFromApi(`/genre/${url}/list`));
+      promises.push(fetchDataFromApi(`/genre/${url}/list`));
     });
 
     const data = await Promise.all(promises);
     console.log(data);
     data.map(({ genres }) => {
-        return genres.map((item) => (allGenres[item.id] = item));
+      return genres.map((item) => (allGenres[item.id] = item));
     });
 
     dispatch(getGenres(allGenres));
-};
+  };
 
   return (
     <>
@@ -66,6 +66,7 @@ function App() {
         <Route path="/search/:query" element={<SearchResult />} />
         <Route path="/explore/:mediaType" element={<Explore />} />
         <Route path="*" element={<PageNotFound />} />
+
         {/* <Route path="/signup" element={<Signup />} />
         <Route path="/login" element={<Login />} /> */}
       </Routes>
